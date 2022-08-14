@@ -57,12 +57,11 @@ html {
 
 .footer {
   background-color:black;
-  height: 50px;
+  min-height: 3%;
   position: absolute;
   width: 100%;
   bottom: 0;
   left: 0;
-  overflow: hidden;
   clear: both;
 }
 
