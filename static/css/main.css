@@ -123,6 +123,7 @@ html {
   max-height: 30px;
   vertical-align: middle;
   padding-left: 10px;
+  transform: translate(0, -7%);
 }
 
 .navbar {
