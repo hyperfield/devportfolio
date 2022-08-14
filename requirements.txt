@@ -4,3 +4,6 @@ django-crispy-forms==1.14.0
 django-markdownx==3.0.1
 environs==9.5.0
 Pillow==9.2.0
+asgiref==3.5.2
+backports.zoneinfo==0.2.1
+whitenoise==6.2.0
