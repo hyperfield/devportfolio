@@ -57,12 +57,13 @@ html {
 
 .footer {
   background-color:black;
-  min-height: 50px;
-  position: relative;
+  height: 50px;
+  position: absolute;
   width: 100%;
   bottom: 0;
   left: 0;
-  float: left;
+  overflow: hidden;
+  clear: both;
 }
 
 .footer p {
@@ -109,6 +110,7 @@ html {
   margin-right: 30px;
   text-justify: inter-word;
   font-family: Segoe;
+  margin-bottom: 50px;
 }
 
 .logo {
