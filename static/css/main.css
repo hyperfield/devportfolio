@@ -83,7 +83,7 @@ html {
 }
 
 .menu li a {
-	text-decoration: none;
+	/* text-decoration: none; */
 	display: block;
 	font-weight: 300;
 	color:rgb(0, 0, 0);
@@ -115,7 +115,7 @@ html {
 .logo {
   max-width: 50px;
   max-height: 50px;
-  vertical-align: middle;
+  /* vertical-align: middle; */
 }
 
 .briefcase {
@@ -155,7 +155,7 @@ li.active a:active li.active a:focus {
 .card-title {
   background-color: rgb(159, 184, 184);
   color: rgb(55, 61, 101);
-  padding: 0.5em;
+  padding: 0.3em;
   margin: 0;
   font-style: bold;
   font-size: 24px;
@@ -209,8 +209,9 @@ form input[type="submit"] {
 }
 
 .logo-block {
-  float: right;
-  
+  top: 50%;
+  left: 50%;
+  transform: translate(0, 10%);
 }
 
 .project-title {

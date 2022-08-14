@@ -19,7 +19,8 @@
           <div class="logo-block">
             {% for technology in project.technologies.all %}
               {% if technology.logotype %}
-                <img class="tech-logo" src="{{ technology.logotype.url }}" alt="{{ technology.title }}">
+                <img class="tech-logo" src="{{ technology.logotype.url }}"
+                     alt="{{ technology.title }}">
               {% endif %}
             {% endfor %}
           </div>
