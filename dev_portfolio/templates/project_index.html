@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_suffix %}Projects{% endblock %}
+{% block page_content %}
+<h2>Projects</h2>
+<p style="padding-bottom: 25px;">Not all projects have been added here yet.<br>
+  I'm mostly a backend developer, so please
+  don't pay too much attention to the visual appearance of the sites and apps that
+  I develop. =) Anyway, I try to make the appearance good enough and tend to
+  improve it with time.
+</p>
+<div class="row">
+
+  {% for project in projects %}
+    <div class="col-md-4" style="padding-bottom: 25px;">
+      <div class="card mb-2" style="min-height: 445px; position:relative;">
+        <h4 class="card-title"
+          style="background-color: teal; color: white; padding: 0.5em; margin: 0;">
+          {{ project.category }}</h4>
+        <img class="card-img-top" src="{{ project.gallery.all.0.image.url }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ project.title }}</h5>
+          <p class="card-text">{{ project.short_description }}</p>
+          <br>
+          {% if project.url %}
+          <p class="card-text">URL: 
+            <a href="{{ project.url }}" target="_blank">{{ project.url_name }}</a>
+          </p>
+          {% endif %}
+          {% if project.src_url %}
+          <p class="card-text">Source code: 
+            <a href="{{ project.src_url }}" target="_blank">{{ project.src_url_name }}</a>
+          </p>
+          {% endif %}
+          <br>
+          <a href="{% url 'project_detail' project.slug %}"
+              class="btn btn-primary" style="position: absolute;
+              left: 5%;
+              bottom: 3%;">
+              Read More
+          </a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+</div>
+{% endblock %}

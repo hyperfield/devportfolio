@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% crispy form form.helper %}
+
+{% block title_suffix %}Contact{% endblock %}
+{% block page_content %}
+<head>
+  <script src="{% static 'scripts/jquery-3.6.0.min.js' %}"></script>
+</head>
+
+<h2>Contact</h2>
+<p>
+  <h5 class="contact_email">
+    Send me an e-mail to <a href="mailto:{{ email }}" class="email">{{ email }}</a>
+    or use the form below.
+  </h5>
+</p>
+
+{% if not filled_form %}
+<form method="post">
+  {% csrf_token %}
+  {% comment %} {{ form.as_p }} {% endcomment %}
+  {% crispy form %}
+  {% comment %} <div class="form-actions">
+    <button type="submit" class="btn btn-primary" style="right: 75%;">Send</button>
+  </div> {% endcomment %}
+</form>
+{% else %}
+<p class="email-sent">
+Your message has been sent. Thank you! If a response is needed, I'll reply shortly.
+</p>
+<p class="form">
+  <span class="form-field">Your name:</span> {{ filled_form.from_name }}<br>
+  <span class="form-field">Your email:</span> {{ filled_form.from_email }}<br>
+  <span class="form-field">Message subject:</span> {{ filled_form.subject }}<br>
+  <span class="form-field">Message:</span><br>
+  {{ filled_form.message }}<br>
+</p>
+{% endif %}
+
+<script>
+$(".email").each(function() {
+  $(this).html( $(this).html().replace("...", "@").replace(/\.\.\./g, ".") );
+  $(this).attr( "href", $(this).attr("href").replace("...", "@").replace(/\.\.\./g, ".") );
+});
+</script>
+
+{% endblock %}
