@@ -16,6 +16,8 @@ class Category(models.Model):
 class Technology(models.Model):
     title = models.CharField(max_length=25)
     description = MarkdownxField()
+    logotype = models.ImageField(upload_to='img_logotypes',
+                                 null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "technologies"

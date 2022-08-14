@@ -14,12 +14,19 @@
   {% for project in projects %}
     <div class="col-md-4" style="padding-bottom: 25px;">
       <div class="card mb-2" style="min-height: 445px; position:relative;">
-        <h4 class="card-title"
-          style="background-color: teal; color: white; padding: 0.5em; margin: 0;">
-          {{ project.category }}</h4>
+        <div class="card-title">
+          {{ project.category }}
+          <div class="logo-block">
+            {% for technology in project.technologies.all %}
+              {% if technology.logotype %}
+                <img class="tech-logo" src="{{ technology.logotype.url }}" alt="{{ technology.title }}">
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
         <img class="card-img-top" src="{{ project.gallery.all.0.image.url }}">
         <div class="card-body">
-          <h5 class="card-title">{{ project.title }}</h5>
+          <h5 class="project-title">{{ project.title }}</h5>
           <p class="card-text">{{ project.short_description }}</p>
           <br>
           {% if project.url %}
