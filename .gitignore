@@ -1,6 +1,7 @@
 # Sources
 media/
 sources/
+staticfiles/
 
 # VSCode
 *.code-workspace
