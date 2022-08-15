@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% block title_suffix %}{{ project.title }}{% endblock %}
+{% block head %}
+  <link rel="stylesheet" href="{% static "css/borland.css" %}" rel="stylesheet" type="text/css">
+{% endblock %}
 {% block page_content %}
 <h1 class="project-title">{{ project.title }}</h1>
 <div class="row">
@@ -13,7 +16,7 @@
     </div>
     <div class="col-md-4">
         <h5>About the project</h5>
-        <p>{{ project.markdown_long_description | safe }}</p>
+        <p>{{ project.markdown_long_description|safe|linebreaks }}</p>
         <br>
         <h5>Technologies used</h5>
         <p>

@@ -19,6 +19,10 @@ class Technology(models.Model):
     logotype = models.ImageField(upload_to='img_logotypes',
                                  null=True, blank=True)
 
+    @property
+    def markdown_description(self):
+        return markdownify(self.description)
+
     class Meta:
         verbose_name_plural = "technologies"
 
@@ -62,6 +66,10 @@ class Project(models.Model):
     technologies = models.ManyToManyField(Technology)
     gallery = models.ManyToManyField(Image, related_name='galleries')
     status = models.ForeignKey(Status, on_delete=models.PROTECT, null=True)
+
+    @property
+    def markdown_short_description(self):
+        return markdownify(self.short_description)
 
     @property
     def markdown_long_description(self):
