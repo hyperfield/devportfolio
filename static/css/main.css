@@ -36,6 +36,23 @@ img {max-width: 100%;}
 html {
 	position: relative;
 	min-height: 100%;
+  padding-bottom: 25px;
+}
+
+.author {
+  background:rgb(239, 240, 251); 
+}
+
+.comment-body {
+  padding-bottom: 20px;
+}
+
+.update-body {
+  padding-bottom: 10px;
+}
+
+.update {
+  padding-bottom: 20px;
 }
 
 .btn-primary {
@@ -57,7 +74,7 @@ html {
 
 .footer {
   background-color:black;
-  min-height: 3%;
+  height: 75px;
   position: absolute;
   width: 100%;
   bottom: 0;

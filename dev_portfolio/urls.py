@@ -9,6 +9,7 @@ urlpatterns = [
     path('', include('projects.urls')),
     path('contact', include('contact.urls')),
     path('markdownx/', include('markdownx.urls')),
+    path("updates/", include("updates.urls")),
 ]
 
 if settings.DEBUG:

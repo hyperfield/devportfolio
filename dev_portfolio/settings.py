@@ -26,7 +26,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'markdownx',
     'projects',
+    'updates',
     'crispy_forms',
+    'adminsortable2',
 ]
 
 MIDDLEWARE = [

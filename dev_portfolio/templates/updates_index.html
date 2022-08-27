@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title_suffix %}Updates{% endblock %}
+
+{% block page_content %}
+<div class="col-md-8 offset-md-2">
+    <h2>Updates (also known as News)</h2>
+    <hr>
+    {% for update in updates %}
+    <div class="update">
+        <h5>{{ update.title }}</h5>
+
+        <small>
+            {{ update.created_on.date }}
+        </small>
+
+        <p class="update-body">
+            {{ update.body | slice:":400" }}
+        </p>
+        <a href="{% url 'update_detail' update.pk %}">
+            Comments
+            ({{ update.count }})
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

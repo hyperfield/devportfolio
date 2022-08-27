@@ -9,6 +9,8 @@
   <script src="{% static 'scripts/jquery-3.6.0.min.js' %}"></script>
 </head>
 
+<div class="col-md-12 offset-md-4">
+
 <h2>Contact</h2>
 <p>
   <h5 class="contact_email">
@@ -16,6 +18,9 @@
     or use the form below.
   </h5>
 </p>
+</div>
+
+<div class="col-md-8 offset-md-4">
 
 {% if not filled_form %}
 <form method="post">
@@ -38,6 +43,8 @@ Your message has been sent. Thank you! If a response is needed, I'll reply short
   {{ filled_form.message }}<br>
 </p>
 {% endif %}
+
+</div>
 
 <script>
 $(".email").each(function() {

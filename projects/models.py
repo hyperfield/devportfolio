@@ -66,6 +66,9 @@ class Project(models.Model):
     technologies = models.ManyToManyField(Technology)
     gallery = models.ManyToManyField(Image, related_name='galleries')
     status = models.ForeignKey(Status, on_delete=models.PROTECT, null=True)
+    priority = models.PositiveIntegerField(blank=True, default=0,
+                                           db_index=True,
+                                           verbose_name="Priority")
 
     @property
     def markdown_short_description(self):
@@ -77,6 +80,7 @@ class Project(models.Model):
 
     class Meta:
         verbose_name_plural = "projects"
+        ordering = ['priority']
 
     def __str__(self):
         return self.title

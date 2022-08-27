@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.core.mail import send_mail, BadHeaderError
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from .forms import ContactForm
 
 
@@ -20,7 +19,6 @@ def contact_page(request, sent=False, filled_form=None):
                           ['pzarva@quicknode.net'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            # return redirect('success')
 
     email = 'pzarva...quicknode...net'
     context = {
@@ -31,7 +29,3 @@ def contact_page(request, sent=False, filled_form=None):
     }
 
     return render(request, 'contact_page.html', context)
-
-
-# def email_success(request):
-#     return contact_page(request, sent=True)

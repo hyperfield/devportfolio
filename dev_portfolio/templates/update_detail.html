@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title_suffix %}{{ update.title }}{% endblock %}
+{% load crispy_forms_tags %}
+{% crispy form form.helper %}
+
+{% block page_content %}
+
+<div class="col-md-10 offset-md-3">
+    <h3>{{ update.title }}</h3>
+
+    <small>
+        {{ update.created_on.date }}
+    </small>
+
+    <p>{{ update.body | linebreaks }}</p>
+    <hr>
+    {% if comments %}
+      <h4>Comments:</h4>
+
+      {% for comment in comments %}
+      <p class="author">
+          On {{ comment.created_on.date }}&nbsp;
+
+          <b>{{ comment.author }}</b> wrote:
+      </p>
+
+      <p class="comment-body">{{ comment.body }}</p>
+      {% endfor %}
+    {% endif %}
+</div>
+<div class="col-md-8 offset-md-3">
+  <form method="post">
+    <h4>Write a comment:</h4>
+    {% csrf_token %}
+    {% crispy form %}
+    {% comment %} <button type="submit" class="btn btn-primary">Post</button> {% endcomment %}
+  </form>
+</div>
+
+{% endblock %}

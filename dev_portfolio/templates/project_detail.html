@@ -9,9 +9,7 @@
 <div class="row">
     <div class="col-md-8">
       {% for image_obj in project_images %}
-      {% comment %} <a href="{{ project.url }}" target="_blank" alt="{{ project.title }}"> {% endcomment %}
         <img src="{{ image_obj.image.url }}" alt="{{ project.title }}" width="100%">
-      {% comment %} </a> {% endcomment %}
       {% endfor %}
     </div>
     <div class="col-md-4">
