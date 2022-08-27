@@ -36,8 +36,11 @@ def update_detail(request, pk):
             except ValidationError:
                 return HttpResponse('Could not submit the form.')
             try:
-                send_mail(new_comment.author, new_comment.body,
-                          ['inbox@quicknode.net'])
+                from_email = 'inbox@quicknode.net'
+                to_emails = [from_email]
+                email_message = f"{new_comment.author}, {new_comment.body}"
+                send_mail("New comment", email_message,
+                          from_email, to_emails)
             except BadHeaderError:
                 pass
 
