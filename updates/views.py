@@ -38,10 +38,8 @@ def update_detail(request, pk):
             try:
                 from_email = 'inbox@quicknode.net'
                 to_emails = [from_email]
-                email_message = f"""
-                Author: {new_comment.author},
-                Comment: {new_comment.body}
-                """
+                email_message = f"Author: {new_comment.author}" +\
+                                f"Comment: {new_comment.body}"
                 send_mail("New Dev Portfolio comment", email_message,
                           from_email, to_emails)
             except BadHeaderError:
