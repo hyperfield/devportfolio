@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title_suffix %}Projects{% endblock %}
+{% block title_suffix %}Projects {{ subtitle }}{% endblock %}
 {% block page_content %}
-<div class="section-title">Projects
+<div class="section-title">Projects {{ subtitle }}
   <div class="projects-filter">
     Show:
     <a href="{% url 'project_index' %}">All</a> |
