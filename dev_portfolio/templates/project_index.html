@@ -2,8 +2,18 @@
 {% load static %}
 {% block title_suffix %}Projects{% endblock %}
 {% block page_content %}
-<h2>Projects</h2>
-
+<div class="section-title">Projects
+  <div class="projects-filter">
+    Show:
+    <a href="{% url 'project_index' %}">All</a> |
+    <a href="{% url 'project_technology' technology='C++' %}">C++</a> |
+    <a href="{% url 'project_technology' technology='Python' %}">Python</a> |
+    <a href="{% url 'project_technology' technology='Django' %}">Django</a> |
+    <a href="{% url 'project_category' category='Application' %}">Applications</a> |
+    <a href="{% url 'project_category' category='Game' %}">Games</a> |
+    <a href="{% url 'project_category' category='Website' %}">Websites</a>
+  </div>
+</div>
 <p style="padding-bottom: 25px;">Not all projects have been added here yet.<br>
   I'm mostly a backend developer, so please
   don't pay too much attention to the visual appearance of the sites and apps that

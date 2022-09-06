@@ -56,7 +56,8 @@ class Image(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length=50)
     slug = models.CharField(max_length=25, null=True)
-    category = models.ForeignKey(Category, on_delete=models.PROTECT, null=True)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT,
+                                 related_name="projects", null=True)
     url = models.URLField(max_length=255, null=True, blank=True)
     url_name = models.CharField(max_length=247, null=True, blank=True)
     src_url = models.URLField(max_length=255, null=True, blank=True)

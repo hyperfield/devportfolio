@@ -2,8 +2,15 @@ from django.shortcuts import render
 from projects.models import Project
 
 
-def project_index(request):
-    projects = Project.objects.all()
+def project_index(request, category=None, technology=None):
+    if not category and not technology:
+        projects = Project.objects.all()
+    elif category:
+        projects = Project.objects.filter(category__title=category)
+    else:
+        projects = Project.objects.filter(
+            technologies__title=technology
+            )
     context = {
         'projects': projects,
     }
