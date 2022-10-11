@@ -11,4 +11,5 @@ asgiref==3.5.2
 backports.zoneinfo==0.2.1
 django-admin-sortable2==2.1.2
 Pygments==2.12.0
+django-tinymce==3.5.0
 

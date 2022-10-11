@@ -10,6 +10,7 @@ urlpatterns = [
     path('contact', include('contact.urls')),
     path('markdownx/', include('markdownx.urls')),
     path("updates/", include("updates.urls")),
+    path("whatido/", include("whatido.urls")),
 ]
 
 if settings.DEBUG:
