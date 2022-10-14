@@ -1,3 +1,12 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import TaskCategory, Task
+
+
+def whatido_index(request):
+    categories = TaskCategory.objects.prefetch_related("tasks").all()
+    context = {
+        "task_categories": categories,
+    }
+
+    return render(request, "whatido_index.html", context)

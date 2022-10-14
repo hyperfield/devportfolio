@@ -14,7 +14,6 @@ def updates_index(request):
     context = {
         "updates": updates,
     }
-    print("Comments: ", updates.count())
 
     return render(request, "updates_index.html", context)
 

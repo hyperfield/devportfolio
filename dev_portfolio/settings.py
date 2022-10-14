@@ -27,8 +27,10 @@ INSTALLED_APPS = [
     'markdownx',
     'projects',
     'updates',
+    'whatido',
     'crispy_forms',
     'adminsortable2',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +129,8 @@ EMAIL_PORT = env.int('EMAIL_PORT')
 EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+TINYMCE_JS_URL = STATIC_URL + 'tinymce/tinymce.min.js'
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': "silver",
+}

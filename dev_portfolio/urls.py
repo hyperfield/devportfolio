@@ -11,6 +11,7 @@ urlpatterns = [
     path('markdownx/', include('markdownx.urls')),
     path("updates/", include("updates.urls")),
     path("whatido/", include("whatido.urls")),
+    path('tinymce/', include('tinymce.urls')),
 ]
 
 if settings.DEBUG:
