@@ -15,11 +15,6 @@ class ProjectAdmin(SortableAdminMixin, admin.ModelAdmin):
 
 class ProjectInline(SortableInlineAdminMixin, admin.TabularInline):
     model = Project
-    # readonly_fields = ("file_image", )
-
-    # def file_image(self, obj):
-    #   return format_html('<img src="{}" style="max-height: 200px">',
-    #                        obj.file.url)
 
 
 admin.site.register(Category)
