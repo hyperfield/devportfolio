@@ -16,7 +16,10 @@ class TaskCategoryInline(SortableInlineAdminMixin, admin.TabularInline):
 
 @admin.register(Task)
 class TaskAdmin(SortableAdminMixin, admin.ModelAdmin):
-    pass
+    list_display = [
+        'task_name',
+        'task_category',
+    ]
 
 
 class TaskInline(SortableInlineAdminMixin, admin.TabularInline):
