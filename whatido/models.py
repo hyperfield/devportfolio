@@ -6,7 +6,7 @@ class TaskCategory(models.Model):
     category_name = models.CharField(max_length=25)
     category_desc = HTMLField(blank=True, null=True)
     priority = models.PositiveIntegerField(blank=True, default=0,
-                                           db_index=True,
+                                           db_index=True, unique=False,
                                            verbose_name="Priority")
 
     class Meta:
@@ -23,6 +23,12 @@ class Task(models.Model):
     task_category = models.ForeignKey('TaskCategory', on_delete=models.CASCADE,
                                       null=True, blank=False,
                                       related_name='tasks')
+    priority = models.PositiveIntegerField(blank=True, default=0,
+                                           db_index=True, unique=False,
+                                           verbose_name="Priority")
+
+    class Meta:
+        ordering = ['priority']
 
     def __str__(self):
         return self.task_name

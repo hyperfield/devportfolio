@@ -15,5 +15,9 @@ class TaskCategoryInline(SortableInlineAdminMixin, admin.TabularInline):
 
 
 @admin.register(Task)
-class TaskAdmin(admin.ModelAdmin):
+class TaskAdmin(SortableAdminMixin, admin.ModelAdmin):
     pass
+
+
+class TaskInline(SortableInlineAdminMixin, admin.TabularInline):
+    model = Task

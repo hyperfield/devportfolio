@@ -130,7 +130,23 @@ EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-TINYMCE_JS_URL = STATIC_URL + 'tinymce/tinymce.min.js'
-TINYMCE_DEFAULT_CONFIG = {
-    'theme': "silver",
-}
+# TINYMCE_JS_URL = STATIC_URL + 'tinymce/tinymce.min.js'
+
+# LOGGING = {
+#    'version': 1,
+#    'disable_existing_loggers': False,
+#    'handlers': {
+#       'file': {
+#          'level': 'DEBUG',
+#          'class': 'logging.FileHandler',
+#          'filename': 'debug.log',
+#       },
+#    },
+#    'loggers': {
+#       'django': {
+#          'handlers': ['file'],
+#          'level': 'DEBUG',
+#          'propagate': True,
+#       },
+#    },
+# }
