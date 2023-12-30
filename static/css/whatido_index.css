@@ -1,0 +1,62 @@
+.content-container {
+  max-width: 800px; /* or your preferred width */
+  margin: 0 auto;
+}
+
+.categories .category {
+  margin-bottom: 40px;
+}
+
+.category h3 {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.tasks {
+  list-style: none;
+  padding-left: 0;
+}
+
+.task {
+  margin-bottom: 10px;
+}
+
+.task details {
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  font-family: Arial;
+}
+
+.task details summary {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.task-desc {
+  margin-top: 10px;
+}
+
+.section-title {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.dark-mode .category h3 {
+  color: #ccc; /* Lighter text color for titles in dark mode */
+}
+
+.dark-mode .task details {
+  background-color: #262626; /* Darker background for task details */
+  color: #fff; /* Light text for better readability */
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .task details summary {
+  color: #ddd; /* Lighter color for summary text in dark mode */
+}
+
+.dark-mode .task-desc {
+  color: #ddd; /* Lighter text color for task description in dark mode */
+}

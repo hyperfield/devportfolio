@@ -2,17 +2,21 @@
 {% load static %}
 {% block title_suffix %}{{ project.title }}{% endblock %}
 {% block head %}
-  <link rel="stylesheet" href="{% static "css/borland.css" %}" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{% static "css/borland.css" %}" type="text/css">
+  <link rel="stylesheet" href="{% static "css/project_detail.css" %}" type="text/css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 {% endblock %}
 {% block page_content %}
-<h1 class="project-title">{{ project.title }}</h1>
-<div class="row">
-    <div class="col-md-8">
+<div class="project-detail-container">
+    <h1 class="project-title">{{ project.title }}</h1>
+    <div class="project-gallery">
       {% for image_obj in project_images %}
-        <img src="{{ image_obj.image.url }}" alt="{{ project.title }}" width="100%">
+        <a href="{{ image_obj.image.url }}" data-lightbox="project-gallery" data-title="{{ project.title }}">
+          <img src="{{ image_obj.image.url }}" alt="{{ project.title }}" class="project-thumbnail">
+        </a>
       {% endfor %}
     </div>
-    <div class="col-md-4">
+    <div class="project-description">
         <h5>About the project</h5>
         <p>{{ project.markdown_long_description|safe|linebreaks }}</p>
         <br>
@@ -23,10 +27,8 @@
           {% endfor %}
         </p>
         <br>
-        <p><h5>Project status</h5>
-          {{ project.status }}
-        </p>
-        <br>
+        <h5>Project status</h5>
+        <p>{{ project.status }}</p>
         {% if project.url %}
         <h5>Link<br>
           <a href="{{ project.url }}" target="_blank">{{ project.url_name }}</a>
@@ -39,10 +41,13 @@
         {% endif %}
         <br>
         <a href="{% url 'project_index' %}"
-          class="btn btn-primary"
-          style="margin-bottom:7%;">
+          class="btn btn-primary">
           Return
         </a>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 {% endblock %}

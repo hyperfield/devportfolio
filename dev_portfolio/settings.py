@@ -119,8 +119,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MARKDOWNX_MARKDOWN_EXTENSIONS = ['markdown.extensions.extra',
                                  'fenced_code', 'codehilite']
 
-DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL')
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = env.str('EMAIL_HOST')
 EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')

@@ -1,24 +1,22 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title_suffix %}Updates{% endblock %}
 
+{% block head %}
+<link rel="stylesheet" href="{% static "css/updates_index.css" %}">
+{% endblock %}
+
 {% block page_content %}
-<div class="col-md-8 offset-md-2">
-    <div class="section-title">Updates (a.k.a. News)</div>
+<div class="content-container">
+    <h2 class="section-title">Updates (a.k.a. News)</h2>
     <hr>
     {% for update in updates %}
     <div class="update">
-        <h5>{{ update.title }}</h5>
-
-        <small>
-            {{ update.created_on.date }}
-        </small>
-
-        <p class="update-body">
-            {{ update.body | slice:":400" }}
-        </p>
-        <a href="{% url 'update_detail' update.pk %}">
-            Comments
-            ({{ update.count }})
+        <h3 class="update-title">{{ update.title }}</h3>
+        <small class="update-date">{{ update.created_on.date }}</small>
+        <p class="update-body">{{ update.body | slice:":400" }}</p>
+        <a href="{% url 'update_detail' update.pk %}" class="update-comments">
+            Comments ({{ update.count }})
         </a>
     </div>
     {% endfor %}

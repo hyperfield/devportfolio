@@ -4,66 +4,70 @@
 {% block page_content %}
 <div class="section-title">Projects {{ subtitle }}
   <div class="projects-filter">
-    Show:
-    <a href="{% url 'project_index' %}">All</a> |
-    <a href="{% url 'project_technology' technology='C++' %}">C++</a> |
-    <a href="{% url 'project_technology' technology='Python' %}">Python</a> |
-    <a href="{% url 'project_technology' technology='Django' %}">Django</a> |
-    <a href="{% url 'project_category' category='Application' %}">Applications</a> |
-    <a href="{% url 'project_category' category='Game' %}">Games</a> |
+    Show:&nbsp;
+    <a href="{% url 'project_index' %}">All</a>
+    <a href="{% url 'project_technology' technology='C++' %}">C++</a>
+    <a href="{% url 'project_technology' technology='Django' %}">Django</a>
+    <a href="{% url 'project_technology' technology='PHP' %}">PHP</a>
+    <a href="{% url 'project_technology' technology='Python' %}">Python</a>
+    <a href="{% url 'project_category' category='Application' %}">Applications</a>
+    <a href="{% url 'project_category' category='Game' %}">Games</a>
     <a href="{% url 'project_category' category='Website' %}">Websites</a>
   </div>
 </div>
-<p style="padding-bottom: 25px;">These are some of the projects I've worked on.<br>
-  I specialize on backend development, so the visual appearance of the websites
-  is not on what I put most of my emphasis.<br>
-  <br>
-  By the way, if you want to hire me to build you a good functional website or
-  application, get in touch with me.  
+<p style="padding-bottom: 25px;">These are some projects I've worked on.<br>
+  Even though I specialize on backend development, I improve my frontend skills as well.<br>
 </p>
 
-<div class="row">
-
+<div id="projects-grid">
   {% for project in projects %}
-    <div class="col-md-4" style="padding-bottom: 25px;">
-      <div class="card mb-2" style="min-height: 475px; position:relative;">
-        <div class="card-title">
-          {{ project.category }}
-          <div class="logo-block">
-            {% for technology in project.technologies.all %}
-              {% if technology.logotype %}
-                <img class="tech-logo" src="{{ technology.logotype.url }}"
-                     alt="{{ technology.title }}">
-              {% endif %}
-            {% endfor %}
-          </div>
+  <div class="project-item">
+    <div class="card">
+      <div class="card-header">
+        {{ project.category }}
+        <div class="logo-block">
+          {% for technology in project.technologies.all %}
+            {% if technology.logotype %}
+              <img class="tech-logo" src="{{ technology.logotype.url }}" alt="{{ technology.title }}">
+            {% endif %}
+          {% endfor %}
         </div>
-        <img class="card-img-top" src="{{ project.gallery.all.0.image.url }}">
-        <div class="card-body">
-          <h5 class="project-title">{{ project.title }}</h5>
-          <p class="card-text">{{ project.short_description }}</p>
-          <br>
-          {% if project.url %}
+      </div>
+      <img class="card-img-top" src="{{ project.gallery.all.0.image.url }}">
+      <div class="card-body">
+        <h5 class="project-title">{{ project.title }}</h5>
+        <p class="card-text">{{ project.short_description }}</p>
+        {% if project.url %}
           <p class="card-text">URL: 
             <a href="{{ project.url }}" target="_blank">{{ project.url_name }}</a>
           </p>
-          {% endif %}
-          {% if project.src_url %}
+        {% endif %}
+        {% if project.src_url %}
           <p class="card-text">Source code: 
             <a href="{{ project.src_url }}" target="_blank">{{ project.src_url_name }}</a>
           </p>
-          {% endif %}
-          <br>
-          <a href="{% url 'project_detail' project.slug %}"
-              class="btn btn-primary" style="position: absolute;
-              left: 5%;
-              bottom: 3%;">
-              Read More
-          </a>
-        </div>
+        {% endif %}
+      </div>
+      <div class="card-footer">
+        <a href="{% url 'project_detail' project.slug %}" class="btn btn-primary">
+          Read More
+        </a>
       </div>
     </div>
-  {% endfor %}
-
+  </div>
+{% endfor %}
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var grid = document.querySelector('#projects-grid');
+    var msnry = new Masonry(grid, {
+      // options
+      itemSelector: '.project-item',
+      columnWidth: '.project-item', // Using the item's size as the column width
+      gutter: 15
+    });
+  });
+// What options are available?
+</script>
 {% endblock %}

@@ -3,54 +3,44 @@
 {% load crispy_forms_tags %}
 {% crispy form form.helper %}
 
+{% block head %}
+<link rel="stylesheet" href="{% static "css/contact_page.css" %}">
+{% endblock %}
+
 {% block title_suffix %}Contact{% endblock %}
 {% block page_content %}
-<head>
-  <script src="{% static 'scripts/jquery-3.6.0.min.js' %}"></script>
-</head>
+<div class="contact-container">
+  <h2 class="section-title">Contact</h2>
+  <p class="contact-instructions">
+    <strong>Send me an e-mail to <a href="mailto:{{ email }}" class="email">{{ email }}</a> or use the form below.</strong>
+  </p>
 
-<div class="col-md-12 offset-md-4">
-
-<div class="section-title">Contact</div>
-<p>
-  <h5 class="contact_email">
-    Send me an e-mail to <a href="mailto:{{ email }}" class="email">{{ email }}</a>
-    or use the form below.
-  </h5>
-</p>
-</div>
-
-<div class="col-md-8 offset-md-4">
-
-{% if not filled_form %}
-<form method="post">
-  {% csrf_token %}
-  {% comment %} {{ form.as_p }} {% endcomment %}
-  {% crispy form %}
-  {% comment %} <div class="form-actions">
-    <button type="submit" class="btn btn-primary" style="right: 75%;">Send</button>
-  </div> {% endcomment %}
-</form>
-{% else %}
-<p class="email-sent">
-Your message has been sent. Thank you! If a response is needed, I'll reply shortly.
-</p>
-<p class="form">
-  <span class="form-field">Your name:</span> {{ filled_form.from_name }}<br>
-  <span class="form-field">Your email:</span> {{ filled_form.from_email }}<br>
-  <span class="form-field">Message subject:</span> {{ filled_form.subject }}<br>
-  <span class="form-field">Message:</span><br>
-  {{ filled_form.message }}<br>
-</p>
-{% endif %}
-
+  {% if not filled_form %}
+    <form method="post" class="contact-form">
+      {% csrf_token %}
+      {% crispy form %}
+    </form>
+  {% else %}
+    <p class="email-sent">
+      Your message has been sent. Thank you! If a response is needed, I'll reply shortly.
+    </p>
+    <div class="submitted-form">
+      <p><strong>Your name:</strong> {{ filled_form.from_name }}</p>
+      <p><strong>Your email:</strong> {{ filled_form.from_email }}</p>
+      <p><strong>Message subject:</strong> {{ filled_form.subject }}</p>
+      <p><strong>Message:</strong><br>{{ filled_form.message }}</p>
+    </div>
+  {% endif %}
 </div>
 
 <script>
-$(".email").each(function() {
-  $(this).html( $(this).html().replace("...", "@").replace(/\.\.\./g, ".") );
-  $(this).attr( "href", $(this).attr("href").replace("...", "@").replace(/\.\.\./g, ".") );
-});
-</script>
+  // Select all elements with the class 'email'
+  document.querySelectorAll('.email').forEach(function(element) {
+    // Replace '...' with '@' and '...' with '.' in the text
+    element.textContent = element.textContent.replace("...", "@").replace(/\.\.\./g, ".");
 
+    // Do the same replacement in the 'href' attribute
+    element.setAttribute('href', element.getAttribute('href').replace("...", "@").replace(/\.\.\./g, "."));
+  });
+</script>
 {% endblock %}

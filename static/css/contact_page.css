@@ -1,0 +1,89 @@
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.contact-instructions {
+  margin-bottom: 30px;
+}
+
+.contact-form {
+  background-color: #f3f3f3;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.email-sent {
+  background-color: #dff0d8;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.submitted-form {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.submitted-form p {
+  margin-bottom: 10px;
+}
+
+form {
+  max-width: 500px;
+}
+
+form textarea {
+  width: 95%;
+  height: 150px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  resize: none;
+}
+
+@media (max-width: 600px) {
+  form textarea {
+    width: 92%;
+  }
+}
+
+.btn-primary {
+  margin-top: 15px;
+}
+
+/* Dark mode styles */
+.dark-mode .contact-form {
+  background-color: #333; /* Darker background for the form */
+  color: #fff; /* Light text for better readability */
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .email-sent {
+  background-color: #2d2f30; /* Darker background for the email sent confirmation */
+  color: #7dbf7d; /* Light green color for text to indicate success */
+}
+
+.dark-mode .submitted-form {
+  background-color: #404040;
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode form textarea {
+  background-color: #262626; /* Darker background for text area */
+  color: #fff; /* Light text color for text area */
+  border-color: #555;
+}
+
+.dark-mode .btn.btn-primary {
+  background-color: #5a5a5a;
+  color: #ddd;
+}
+
+.dark-mode .btn-primary:hover {
+  background-color: #777;
+}

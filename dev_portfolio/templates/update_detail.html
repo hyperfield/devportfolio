@@ -1,40 +1,38 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title_suffix %}{{ update.title }}{% endblock %}
 {% load crispy_forms_tags %}
 {% crispy form form.helper %}
 
+{% block head %}
+<link rel="stylesheet" href="{% static "css/update_details.css" %}">
+{% endblock %}
+
 {% block page_content %}
-
-<div class="col-md-10 offset-md-3">
-    <h3>{{ update.title }}</h3>
-
-    <small>
-        {{ update.created_on.date }}
-    </small>
-
-    <p>{{ update.body | linebreaks }}</p>
+<div class="update-detail-container">
+    <h2 class="update-title">{{ update.title }}</h2>
+    <p class="update-date">{{ update.created_on.date }}</p>
+    <p class="update-body">{{ update.body | linebreaks }}</p>
     <hr>
     {% if comments %}
-      <h4>Comments:</h4>
-
-      {% for comment in comments %}
-      <p class="author">
-          On {{ comment.created_on.date }}&nbsp;
-
-          <b>{{ comment.author }}</b> wrote:
-      </p>
-
-      <p class="comment-body">{{ comment.body }}</p>
-      {% endfor %}
+        <div class="comments-section">
+            <h4>Comments:</h4>
+            {% for comment in comments %}
+                <div class="comment">
+                    <p class="author">
+                        On {{ comment.created_on.date }} <b>{{ comment.author }}</b> wrote:
+                    </p>
+                    <p class="comment-body">{{ comment.body }}</p>
+                </div>
+            {% endfor %}
+        </div>
     {% endif %}
+    <div class="comment-form">
+        <h4>Write a comment:</h4>
+        <form method="post">
+            {% csrf_token %}
+            {% crispy form %}
+        </form>
+    </div>
 </div>
-<div class="col-md-8 offset-md-3">
-  <form method="post">
-    <h4>Write a comment:</h4>
-    {% csrf_token %}
-    {% crispy form %}
-    {% comment %} <button type="submit" class="btn btn-primary">Post</button> {% endcomment %}
-  </form>
-</div>
-
 {% endblock %}

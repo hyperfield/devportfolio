@@ -28,4 +28,4 @@ class CommentForm(forms.Form):
         self.helper.form_method = 'post'
         self.helper.form_action = 'post_comment'
 
-        self.helper.add_input(Submit('submit', 'Post comment'))
+        self.helper.add_input(Submit('submit', 'Post'))

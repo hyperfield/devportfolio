@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.core.mail import send_mail, BadHeaderError
+from django.core.mail import EmailMessage, BadHeaderError
 from django.http import HttpResponse
 from .forms import ContactForm
 
@@ -11,12 +11,22 @@ def contact_page(request, sent=False, filled_form=None):
         form = ContactForm(request.POST)
         if form.is_valid():
             subject = form.cleaned_data['subject']
-            from_email = form.cleaned_data['from_email']
+            from_email = 'inbox@quicknode.net'
+            user_email = form.cleaned_data['from_email']
             message = form.cleaned_data['message']
             filled_form = form.cleaned_data
+
+            email = EmailMessage(
+                subject,
+                message,
+                from_email,
+                ['inbox@quicknode.net'],
+                reply_to=[user_email]
+            )
+
             try:
-                send_mail(subject, message, from_email,
-                          ['pzarva@quicknode.net'])
+                email.send()
+                sent = True
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
 

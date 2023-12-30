@@ -5,10 +5,9 @@ django-markdownx==3.0.1
 environs==9.5.0
 Pillow==9.2.0
 asgiref==3.5.2
-backports.zoneinfo==0.2.1
 whitenoise==6.2.0
 asgiref==3.5.2
-backports.zoneinfo==0.2.1
+# backports.zoneinfo==0.2.1
 django-admin-sortable2==2.1.2
 Pygments==2.12.0
 django-tinymce==3.5.0

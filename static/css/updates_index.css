@@ -1,0 +1,94 @@
+.content-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-title {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.update {
+  margin-bottom: 30px;
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+  font-family: Arial;
+}
+
+.update-title {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+}
+
+.update-date {
+  font-size: 0.9em;
+  color: #6c757d;
+}
+
+.update-body {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.update-comments {
+  display: inline-block;
+  font-weight: bold;
+  color: #007bff; /* Example color for links */
+  text-decoration: none;
+}
+
+.update-comments:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode styles */
+.dark-mode .update {
+  background: #262626; /* Dark background */
+  color: #fff; /* Light text for better readability */
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1); /* Shadow adjusted for dark mode */
+}
+
+.dark-mode .update-title {
+  color: #ccc; /* Lighter text color for titles */
+}
+
+.dark-mode .update-date {
+  color: #aaa; /* Lighter text color for dates */
+}
+
+.dark-mode .update-body {
+  color: #ddd; /* Lighter text color for body */
+}
+
+.dark-mode .comment {
+  background-color: #333; /* Darker background for comments */
+  color: #fff; /* Light text color for comments */
+}
+
+.dark-mode .author {
+  color: #f9f9f9; /* Lighter color for author names */
+}
+
+.dark-mode .comment-form {
+  background-color: #404040; /* Dark background for form */
+  color: #fff; /* Light text color for form */
+}
+
+.dark-mode .comment-form input[type="text"], 
+.dark-mode .comment-form textarea {
+  background-color: #333; /* Darker background for input fields */
+  color: #fff; /* Light text color for input fields */
+  border-color: #555; /* Adjusted border color */
+}
+
+.dark-mode .comment-form input[type="submit"] {
+  background-color: #5a5a5a; /* Darker background for submit button */
+  color: #ddd; /* Light text color for button */
+}
+
+.dark-mode .comment-form input[type="submit"]:hover {
+  background-color: #777; /* Hover color for button */
+}
