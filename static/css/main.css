@@ -22,6 +22,10 @@ nav.horizontal ul li { display: inline-block; }
 img {max-width: 100%;}
 /*end reset*/
 
+*, *::before, *::after {
+  box-sizing: border-box; /* Ensures padding and borders are included in total width and height */
+}
+
 html {
 	position: relative;
 	min-height: 100%;
@@ -35,6 +39,10 @@ body {
 .dark-mode {
   background: rgba(37, 37, 38, 0.915);
   color: #ffffff;
+}
+
+.dark-mode .hamburger {
+  color: #50507f;
 }
 
 .dark-mode .navbar {
@@ -267,7 +275,6 @@ body {
 
 .hamburger-menu {
   display: none;
-  /* font-family: 'Segoe'; */
   position: absolute;
   background-color: #444;
   width: 100%;
@@ -476,16 +483,16 @@ ul {
 
 .card-footer {
   text-align: right;
-  border-top: none; /* Removing top border for footer */
+  border-top: none;
 }
 
 .btn-primary {
-  background-color: #007bff; /* Example primary color */
+  background-color: #007bff;
   color: white;
   padding: 8px 12px;
   border-radius: 5px;
-  text-decoration: none; /* Remove underline from links */
-  display: inline-block; /* Align properly as a button */
+  text-decoration: none;
+  display: inline-block;
 }
 
 .btn-primary:hover {
@@ -506,7 +513,7 @@ ul {
   }
 
   .mobile-menu {
-    display: flex; /* Use flexbox for alignment */
+    display: flex;
     align-items: center; /* Center hamburger vertically */
     justify-content: flex-end; /* Align hamburger to the right */
     flex-grow: 1;
@@ -547,10 +554,16 @@ ul {
   .hamburger {
     background: none;
     border: none;
+    display: flex;
+    margin: 0;
+    border: none;
     color: rgb(6, 4, 4);
     font-size: 60px;
     cursor: pointer;
     transform: translate(0, -10%);
+    padding: 0;
+    align-self: center;
+    padding-right: 20px;
     padding-left: 20px;
   }
 }

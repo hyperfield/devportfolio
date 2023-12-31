@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
+{% block head %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+{% endblock %}
 {% block title_suffix %}Projects {{ subtitle }}{% endblock %}
 {% block page_content %}
 <div class="section-title">Projects {{ subtitle }}
@@ -61,13 +66,16 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var grid = document.querySelector('#projects-grid');
-    var msnry = new Masonry(grid, {
-      // options
-      itemSelector: '.project-item',
-      columnWidth: '.project-item', // Using the item's size as the column width
-      gutter: 15
+    // Initialize Masonry after all images have loaded
+    imagesLoaded(grid, function() {
+      new Masonry(grid, {
+        // options
+        itemSelector: '.project-item',
+        columnWidth: '.project-item',
+        gutter: 15
+      });
     });
   });
-// What options are available?
+  // What other options are available?
 </script>
 {% endblock %}
