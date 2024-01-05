@@ -22,10 +22,6 @@ nav.horizontal ul li { display: inline-block; }
 img {max-width: 100%;}
 /*end reset*/
 
-*, *::before, *::after {
-  box-sizing: border-box; /* Ensures padding and borders are included in total width and height */
-}
-
 html {
 	position: relative;
 	min-height: 100%;
@@ -112,6 +108,11 @@ body {
 }
 
 @font-face {
+  font-family: 'Futura';
+  src: url('../fonts/57Futura-Regular.otf')
+}
+
+@font-face {
   font-family: 'Segoe';
   src: url('../fonts/SegoeWP.ttf');
 }
@@ -144,7 +145,7 @@ body {
   color: white; /* Text color */
   font-size: 16px; /* Font size */
   font-weight: bold; /* Bold text */
-  text-transform: uppercase; /* Uppercase text */
+  text-transform: uppercase;
   border-radius: 5px; /* Rounded corners */
   transition: all 0.3s ease; /* Smooth transition for hover effects */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
@@ -232,11 +233,13 @@ body {
 }
 
 .menu li a {
-	display: box;
-	font-weight: 300;
+	display: block;
+	font-weight: bold;
+  font-size: 21px;
 	color:rgb(0, 0, 0);
-	font-size: 18px;
   margin-left: 10px;
+  font-family: 'Courier', Helvetica, sans-serif;
+  transform: translateY(4px);
 }
 
 .menu li a:hover {
@@ -250,7 +253,7 @@ body {
 }
 
 .wrap {
-	max-width: 1400px;
+	max-width: 1200px;
   margin: 0 auto;
   max-height: fit-content;
 }
@@ -258,18 +261,28 @@ body {
 .nav-wrap {
   display: flex;
   justify-content: space-between;
-  margin: 0 15%;
+  margin: 0 19%;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1290px) {
+  #projects-grid {
+    width: 1000px;
+  }
+
+  .wrap {
+    max-width: 1050px;
+  }
+}
+
+@media (max-width: 1280px) {
   .nav-wrap {
-    margin: 0 5%; /* Smaller margin for medium screens */
+    margin: 0 5%;
   }
 }
 
 @media (max-width: 800px) {
   .nav-wrap {
-    margin: 0 0%; /* Even smaller margin for small screens */
+    margin: 0 0%;
   }
 }
 
@@ -296,12 +309,12 @@ body {
 }
 
 .content {
-	/* float: left; */
   margin-left: 30px;
   margin-right: 30px;
   text-justify: inter-word;
-  font-family: Segoe;
+  font-family: 'Segoe';
   margin-bottom: 100px;
+  max-width: 1000px;
 }
 
 .briefcase {
@@ -309,7 +322,6 @@ body {
   max-height: 40px;
   vertical-align: middle;
   padding-left: 10px;
-  /* transform: translate(0, -7%); */
 }
 
 .logo {
@@ -321,12 +333,12 @@ body {
 
 .navbar {
   background: linear-gradient(to left, #8c88b1, #a8a4c5);
-  font-family: 'Protos';
+  text-transform: uppercase;
   position: relative;
   display: flex;
   flex-wrap: nowrap;
   color: #08f7fe;
-  padding-top: 15px;
+  padding-top: 20px;
 }
 
 .navbar ul {
@@ -334,7 +346,6 @@ body {
   padding: 0;
   margin: 0;
   display: flex;
-  flex-grow: 1; /* Allows menu to grow and push toggle to the right */
   align-items: center;
 }
 
@@ -365,6 +376,7 @@ body {
   margin-left: auto; /* Pushes button to the right */
   align-self: center; /* Align vertically */
   transition: background-color 0.3s ease;
+  margin-left: 20px;
 }
 
 #theme-toggle:hover {
@@ -383,7 +395,7 @@ form {
 
 .email-sent {
   background-color:rgb(21, 213, 133);
-  font-weight:300;
+  font-weight: 300;
   color: rgb(58, 53, 53);
   margin: 10px;
   padding: 10px;
@@ -412,9 +424,9 @@ p label {
 }
 
 .section-title {
-  font-family: 'Protos';
+  font-family: 'Courier New';
   font-size: 22px;
-  _padding-bottom: 20px;
+  text-transform: uppercase;
 }
 
 .tech-logo {
@@ -428,13 +440,14 @@ ul {
 }
 
 #projects-grid {
-  width: 100%;
-  margin: 0 auto; /* Center the grid */
+  display: flex;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .project-item {
-  width: 300px; /* Approximate width for 4 columns, adjust as needed */
-  box-sizing: border-box; /* Include padding and borders in the width */
+  position: relative;
+  width: 320px;
 }
 
 .card {
@@ -514,7 +527,7 @@ ul {
 
   .mobile-menu {
     display: flex;
-    align-items: center; /* Center hamburger vertically */
+    align-items: center;
     justify-content: flex-end; /* Align hamburger to the right */
     flex-grow: 1;
   }
@@ -568,26 +581,70 @@ ul {
   }
 }
 
+@media (max-width: 820px) {
+  #projects-grid {
+    width: 660px;
+  }
+}
+
 @media (max-width: 670px) {
     #projects-grid {
-      width: 100%;
-      margin-left: 40px; /* Center the grid */
+      width: 320px;
     }
 
     .nav-wrap {
-      margin: 0 70%;
+      margin: 0 65%;
     }
 }
 
 @media (max-width: 570px) {
   .nav-wrap {
-    margin: 0 65%;
+    margin: 0 60%;
+  }
+
+  #projects-grid {
+    width: 320px;
+  }
+
+  .project-item {
+    position: relative;
+    margin: 0 auto;
   }
 }
 
 @media (max-width: 450px) {
   .nav-wrap {
-    margin: 0 60%;
+    margin: 0 55%;
+  }
+
+  #projects-grid {
+    width: 280px;
+  }
+
+  .project-item {
+    position: relative;
+    margin: 0 auto;
+    width: 280px;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 400px) {
+  .nav-wrap {
+    margin: 0 42%;
+  }
+
+  .content {
+    margin-left: 0;
+    margin-right: 0;
+    font-family: 'Segoe';
+  }
+
+  .project-item {
+    position: relative;
+    margin: 0 auto;
+    width: 280px;
+    box-sizing: border-box;
   }
 }
 

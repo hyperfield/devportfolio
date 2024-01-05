@@ -1,7 +1,7 @@
 .contact-container {
+  font-family: 'Arial';
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
 }
 
 .contact-instructions {
@@ -28,11 +28,15 @@
 }
 
 .submitted-form p {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 form {
   max-width: 500px;
+}
+
+input {
+  margin-bottom: 8px;
 }
 
 form textarea {
@@ -45,6 +49,12 @@ form textarea {
   resize: none;
 }
 
+@media (max-width: 850px) {
+  .contact-container {
+    max-width: 500px;
+  }
+}
+
 @media (max-width: 600px) {
   form textarea {
     width: 92%;
@@ -53,6 +63,11 @@ form textarea {
 
 .btn-primary {
   margin-top: 15px;
+}
+
+.section-title {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 /* Dark mode styles */

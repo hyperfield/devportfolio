@@ -50,7 +50,7 @@
         document.body.classList.add('dark-mode');
       }
   
-      updateButtonText(isDarkMode); // Update button text on page load
+      updateButtonText(isDarkMode);
   
       // Event listeners for toggles
       document.querySelectorAll('.theme-toggle').forEach(function(toggle) {
@@ -65,8 +65,8 @@
   </script>
     
   <div class="navbar">
-    <img class="logo" src="{% static 'images/qn_logo_transpbg.png' %}"
-                            alt="Quicknode Logo">
+    <a href="/"><img class="logo" src="{% static 'images/qn_logo_transpbg.png' %}"
+                            alt="Quicknode Logo"></a>
     <div class="nav-wrap">
       <div class="hamburger-menu">
         <ul>
