@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from .views import robots_view
 
 
 urlpatterns = [
@@ -12,6 +13,7 @@ urlpatterns = [
     path("updates/", include("updates.urls")),
     path("whatido/", include("whatido.urls")),
     path('tinymce/', include('tinymce.urls')),
+    path('robots.txt', robots_view),
 ]
 
 if settings.DEBUG:
