@@ -38,7 +38,7 @@
           {% endfor %}
         </div>
       </div>
-      <img class="card-img-top" src="{{ project.gallery.all.0.image.url }}">
+      <img class="card-img-top" src="{{ project.gallery.all.0.image.url }}" alt="{{ project.title }}">
       <div class="card-body">
         <h5 class="project-title">{{ project.title }}</h5>
         <p class="card-text">{{ project.short_description }}</p>
