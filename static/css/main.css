@@ -326,17 +326,10 @@ body {
   max-width: 1000px;
 }
 
-.briefcase {
-  max-width: 40px;
-  max-height: 40px;
-  vertical-align: middle;
-  padding-left: 10px;
-}
-
 .logo {
   max-width: 50px;
   max-height: 50px;
-  transform: translate(0, -15%);
+  transform: translate(15%, -15%);
   margin-left: 5px;
 }
 
