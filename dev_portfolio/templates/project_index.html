@@ -1,9 +1,28 @@
 {% extends "base.html" %}
 {% load static %}
 {% block head %}
+<link rel="stylesheet" href="{% static "css/projects_index.css" %}">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var grid = document.querySelector('#projects-grid');
+
+  // Initialize Masonry after all images have loaded
+  imagesLoaded(grid, function() {
+    new Masonry(grid, {
+      itemSelector: '.project-item',
+      columnWidth: '.project-item',
+      gutter: 15
+    });
+
+    // Show the grid once Masonry is initialized
+    grid.classList.remove('hidden');
+    grid.classList.add('visible');
+  });
+});
+</script>
 {% endblock %}
 {% block title_suffix %}Projects {{ subtitle }}{% endblock %}
 {% block page_content %}
@@ -21,7 +40,7 @@
   </div>
 </div>
 
-<div id="projects-grid">
+<div id="projects-grid" class="hidden">
   {% for project in projects %}
   <div class="project-item">
     <div class="card">
@@ -30,7 +49,7 @@
         <div class="logo-block">
           {% for technology in project.technologies.all %}
             {% if technology.logotype %}
-              <img class="tech-logo" src="{{ technology.logotype.url }}" alt="{{ technology.title }}">
+            <img class="tech-logo" src="{{ technology.logotype.url }}" alt="{{ technology.title }}" width="32" height="32">
             {% endif %}
           {% endfor %}
         </div>
@@ -59,18 +78,4 @@
   </div>
 {% endfor %}
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var grid = document.querySelector('#projects-grid');
-    // Initialize Masonry after all images have loaded
-    imagesLoaded(grid, function() {
-      new Masonry(grid, {
-        itemSelector: '.project-item',
-        columnWidth: '.project-item',
-        gutter: 15
-      });
-    });
-  });
-</script>
 {% endblock %}

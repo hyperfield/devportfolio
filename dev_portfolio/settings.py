@@ -142,24 +142,3 @@ TINYMCE_DEFAULT_CONFIG = {
     "custom_undo_redo_levels": 10,
     "language": "en_US",  # To force a specific language instead of the Django current language.
 }
-
-# TINYMCE_JS_URL = STATIC_URL + 'tinymce/tinymce.min.js'
-
-# LOGGING = {
-#    'version': 1,
-#    'disable_existing_loggers': False,
-#    'handlers': {
-#       'file': {
-#          'level': 'DEBUG',
-#          'class': 'logging.FileHandler',
-#          'filename': 'debug.log',
-#       },
-#    },
-#    'loggers': {
-#       'django': {
-#          'handlers': ['file'],
-#          'level': 'DEBUG',
-#          'propagate': True,
-#       },
-#    },
-# }
