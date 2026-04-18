@@ -26,7 +26,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@fontsource/fira-code@latest/index.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <script data-goatcounter="https://quicknode.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
   <script>
@@ -65,7 +64,10 @@
       });
     });
   </script>
-    
+
+  <script data-goatcounter="https://quicknode.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+
   <div class="navbar">
     <a href="/"><img class="logo" src="{% static 'images/qn_logo_transpbg.png' %}"
                             alt="Quicknode Logo"></a>
@@ -73,8 +75,6 @@
       <div class="hamburger-menu">
         <ul>
           <li class="active"><a href="{% url 'project_index' %}">Projects</a></li>
-	  {% comment %} <li class="active"><a href="{% url 'whatido_index' %}">What I do</a></li> {% endcomment %}
-          {% comment %} <li class="active"><a href="#">About me</a></li> {% endcomment %}
           <li class="active"><a href="{% url 'updates_index' %}">Updates</a></li>
           <li class="active"><a href="{% url 'contact' %}">Contact</a></li>
         </ul>
@@ -83,8 +83,6 @@
         <ul>
           <li class="navbar-title"></li>
           <li class="active"><a href="{% url 'project_index' %}">Projects</a></li>
-	  {% comment %} <li class="active"><a href="{% url 'whatido_index' %}">What I do</a></li> {% endcomment %}
-          {% comment %} <li class="active"><a href="#">About me</a></li> {% endcomment %}
           <li class="active"><a href="{% url 'updates_index' %}">Updates</a></li>
           <li class="active"><a href="{% url 'contact' %}">Contact</a></li>
           <button class="theme-toggle">Dark Mode</button>
@@ -112,7 +110,7 @@
   </div>
   <div class="footer">
     <p>
-      &copy; 2024 Developed by <a href="https://quicknode.net">Quicknode.net.</a>
+      &copy; 2025 Developed by <a href="https://quicknode.net">Quicknode.net.</a>
       Code source <a href="https://github.com/hyperfield/devportfolio" target="_blank">available on Github</a>.
     </p> 
   </div>
