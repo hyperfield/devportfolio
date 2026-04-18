@@ -14,8 +14,8 @@ services:
     ports:
       - "${APP_BIND:-0.0.0.0:81}:8000"
     volumes:
-      - app_data:/data
-      - media_data:/app/media
+      - ./data:/data
+      - ./media:/app/media
 
   proxy:
     profiles:
@@ -31,12 +31,10 @@ services:
       - "${HTTPS_BIND:-8443}:443"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - media_data:/srv/media:ro
+      - ./media:/srv/media:ro
       - caddy_data:/data
       - caddy_config:/config
 
 volumes:
-  app_data:
-  media_data:
   caddy_data:
   caddy_config:

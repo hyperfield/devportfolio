@@ -1,5 +1,7 @@
 # Sources
 media/
+data/*
+!data/.gitkeep
 sources/
 staticfiles/
 
@@ -135,3 +137,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# R&D
+docs/
