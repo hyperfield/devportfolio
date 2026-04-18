@@ -35,13 +35,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'dev_portfolio.urls'
@@ -100,16 +100,17 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = env.str('STATIC_ROOT',
+                      os.path.join(BASE_DIR, 'staticfiles'))
 STATIC_TMP = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_URL = '/staticfiles/'
+STATIC_URL = env.str('STATIC_URL', '/static/')
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = env.str('MEDIA_URL', '/media/')
+MEDIA_ROOT = env.str('MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
 os.makedirs(STATIC_TMP, exist_ok=True)
 os.makedirs(STATIC_ROOT, exist_ok=True)
 os.makedirs(MEDIA_ROOT, exist_ok=True)
@@ -120,11 +121,16 @@ MARKDOWNX_MARKDOWN_EXTENSIONS = ['markdown.extensions.extra',
                                  'fenced_code', 'codehilite']
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = env.str('EMAIL_HOST')
-EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = env.int('EMAIL_PORT')
-EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS')
+EMAIL_HOST = env.str('EMAIL_HOST', 'localhost')
+EMAIL_HOST_USER = env.str('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD', '')
+EMAIL_PORT = env.int('EMAIL_PORT', 25)
+EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS', False)
+DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL', 'webmaster@localhost')
+CONTACT_TO_EMAILS = env.list('CONTACT_TO_EMAILS', [DEFAULT_FROM_EMAIL])
+PUBLIC_CONTACT_EMAIL = env.str('PUBLIC_CONTACT_EMAIL', DEFAULT_FROM_EMAIL)
+CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', [])
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
