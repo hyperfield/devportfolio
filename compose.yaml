@@ -12,7 +12,7 @@ services:
       MEDIA_URL: ${MEDIA_URL:-/media/}
       MEDIA_ROOT: ${MEDIA_ROOT:-/app/media}
     ports:
-      - "${APP_BIND:-127.0.0.1:8000}:8000"
+      - "${APP_BIND:-0.0.0.0:81}:8000"
     volumes:
       - app_data:/data
       - media_data:/app/media
