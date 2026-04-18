@@ -11,13 +11,15 @@ services:
       STATIC_URL: ${STATIC_URL:-/static/}
       MEDIA_URL: ${MEDIA_URL:-/media/}
       MEDIA_ROOT: ${MEDIA_ROOT:-/app/media}
-    expose:
-      - "8000"
+    ports:
+      - "${APP_BIND:-127.0.0.1:8000}:8000"
     volumes:
       - app_data:/data
       - media_data:/app/media
 
   proxy:
+    profiles:
+      - proxy
     image: caddy:2-alpine
     restart: unless-stopped
     depends_on:
@@ -25,8 +27,8 @@ services:
     environment:
       SITE_HOSTS: ${SITE_HOSTS:-localhost}
     ports:
-      - "80:80"
-      - "443:443"
+      - "${HTTP_BIND:-8080}:80"
+      - "${HTTPS_BIND:-8443}:443"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - media_data:/srv/media:ro
