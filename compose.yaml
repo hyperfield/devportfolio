@@ -1,0 +1,40 @@
+services:
+  app:
+    build:
+      context: .
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DB_DEFAULT: ${DB_DEFAULT:-sqlite:////data/db.sqlite3}
+      DEV_ALLOWED_HOSTS: ${DEV_ALLOWED_HOSTS:-127.0.0.1,localhost}
+      STATIC_URL: ${STATIC_URL:-/static/}
+      MEDIA_URL: ${MEDIA_URL:-/media/}
+      MEDIA_ROOT: ${MEDIA_ROOT:-/app/media}
+    expose:
+      - "8000"
+    volumes:
+      - app_data:/data
+      - media_data:/app/media
+
+  proxy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      - app
+    environment:
+      SITE_HOSTS: ${SITE_HOSTS:-localhost}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - media_data:/srv/media:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  app_data:
+  media_data:
+  caddy_data:
+  caddy_config:
