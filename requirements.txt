@@ -1,7 +1,7 @@
 dj-database-url==1.0.0
 Django==4.0.6
 django-crispy-forms==1.14.0
-django-markdownx==3.0.1
+django-markdownx
 environs==9.5.0
 Pillow==9.2.0
 asgiref==3.5.2
